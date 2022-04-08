@@ -6,10 +6,9 @@ function computerPlay() {
 
 function playerSelection() {
     let playerChoice = prompt(`Please enter "ROCK", "PAPER", or "SCISSORS"`);
-    while (playerChoice != "ROCK" && playerChoice != "PAPER" && playerChoice != "SCISSORS") {
+    while (playerChoice.toUpperCase() != "ROCK" && playerChoice.toUpperCase() != "PAPER" && playerChoice.toUpperCase() != "SCISSORS") {
         playerChoice = prompt(`Invalid Enter! Please enter "ROCK", "PAPER", or "SCISSORS"`);
     }
-    return playerChoice;
+    return playerChoice.toUpperCase();
 }
 
-console.log(playerSelection());
