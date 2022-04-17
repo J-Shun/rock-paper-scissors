@@ -3,3 +3,77 @@
     margin: 0;
     list-style: none;
 }
+
+section {
+    margin-bottom: 50px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 32px;
+    margin: 20px 0;
+}
+
+p {
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 5px solid #fa0;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+
+
+
+/* score-board section */
+
+.score {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+/* display section */
+
+.display {
+    display: flex;
+    justify-content: space-between;
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.user-choice-img, .computer-choice-img {
+    height: 200px;
+    width: 200px;
+}
+
+/* select section */
+
+.cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.card {
+    height: 200px;
+    width: 200px;
+}
+
+.card img {
+    opacity: 0.7;
+    transition: opacity 0.3s;
+    cursor: pointer;
+}
+
+.card img:hover {
+    opacity: 1;
+}
