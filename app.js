@@ -18,10 +18,7 @@ select.forEach(choice =>  {
     choice.addEventListener('click', (e) => {
         let userChoice = e.target.id;
         computerChoice = computerPlay()
-        gameStart(userChoice, computerChoice);
-        updateChoice(userChoice, computerChoice);
-        updateScore();
-        checkWinner(userTotalScore, computerTotalScore);
+        checkGame (userChoice, computerChoice);
     })
 }) 
 
@@ -85,5 +82,14 @@ function checkWinner(userTotalScore, computerTotalScore) {
         winner.innerHTML = "<p>You Win!</p>"
     } else if (computerTotalScore === 5) {
         winner.innerHTML = "<p>You Lose!</p>";
+    }
+}
+
+function checkGame (userChoice, computerChoice) {
+    if (userTotalScore < 5 && computerTotalScore < 5) {
+        gameStart(userChoice, computerChoice);
+        updateChoice(userChoice, computerChoice);
+        updateScore();
+        checkWinner(userTotalScore, computerTotalScore);
     }
 }
