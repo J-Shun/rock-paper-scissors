@@ -55,40 +55,29 @@
 
 // game();
 
-const rock = document.querySelector('#rock');
-const paper = document.querySelector('#paper');
-const scissors = document.querySelector('#scissors');
+// for counting score
+const userScore = document.querySelector('.user-score');
+const computerScore = document.querySelector('.computer-score');
+let userTotalScore = 0;
+let computerTotalScore = 0;
+
+// for update the display
+const userChoiceDisplay = document.querySelector('.user-img-container');
+const computerChoiceDisplay = document.querySelector('.computer-img-container');
+
 
 const select = document.querySelectorAll('.card');
-let userChoice = '';
 
 select.forEach(choice =>  {
     choice.addEventListener('click', (e) => {
-        userChoice = e.target.id;
+        let userChoice = e.target.id;
         computerChoice = computerPlay()
         gameStart(userChoice, computerChoice);
+        updateChoice(userChoice, computerChoice);
+        updateScore();
+        console.log(userTotalScore, computerTotalScore);
     })
 }) 
-
-function gameStart(userPlay, computerPlay) {
-    console.log(userPlay);
-    console.log(computerPlay);
-    if ((userPlay === "rock" && computerPlay === "scissors") 
-    || (userPlay === "paper" && computerPlay === "rock") 
-    || (userPlay === "scissors" && computerPlay === "paper")) {
-        console.log(`You win! ${userPlay} beats ${computerPlay}`);
-        return 1;
-    } else if ((userPlay === "rock" && computerPlay === "paper") 
-    || (userPlay === "paper" && computerPlay === "scissors") 
-    || (userPlay === "scissors" && computerPlay === "rock")) {
-        console.log(`You lose! ${computerPlay} beats ${userPlay}`);
-        return -1;
-    } else {
-        console.log(`It's a draw!`);
-        return 0;
-    }
-}
-
 
 function computerPlay() {
     const choices = ['rock', 'paper', "scissors"];
@@ -96,3 +85,51 @@ function computerPlay() {
     return choices[random];
 }
 
+function gameStart(userPlay, computerPlay) {
+    if ((userPlay === "rock" && computerPlay === "scissors") 
+    || (userPlay === "paper" && computerPlay === "rock") 
+    || (userPlay === "scissors" && computerPlay === "paper")) {
+        userTotalScore++;
+        return;
+    } else if ((userPlay === "rock" && computerPlay === "paper") 
+    || (userPlay === "paper" && computerPlay === "scissors") 
+    || (userPlay === "scissors" && computerPlay === "rock")) {
+        computerTotalScore++;
+        return;
+    } else {
+        return;
+    }
+}
+
+function updateScore() {
+    userScore.textContent =  userTotalScore;
+    computerScore.textContent = computerTotalScore;
+}
+
+function updateChoice(userChoiceImage, computerChoiceImage) {
+    const rockImage = '<img src="./image/rock.jpg" alt="rock" id="rock">';
+    const paperImage = '<img src="./image/paper.jpg" alt="rock" id="paper">';
+    const scissorsImage = '<img src="./image/scissors.jpg" alt="rock" id="scissors">';
+    switch (userChoiceImage) {
+        case 'rock':
+            userChoiceDisplay.innerHTML = rockImage;
+            break;
+        case 'paper':
+            userChoiceDisplay.innerHTML = paperImage;
+            break;
+        case 'scissors':
+            userChoiceDisplay.innerHTML = scissorsImage;
+            break;
+    }
+    switch (computerChoiceImage) {
+        case 'rock':
+            computerChoiceDisplay.innerHTML = rockImage;
+            break;
+        case 'paper':
+            computerChoiceDisplay.innerHTML = paperImage;
+            break;
+        case 'scissors':
+            computerChoiceDisplay.innerHTML = scissorsImage;
+            break;
+    }
+}
