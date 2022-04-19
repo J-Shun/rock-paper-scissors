@@ -12,6 +12,9 @@ const computerChoiceDisplay = document.querySelector('.computer-img-container');
 // for checking winner
 const winner = document.querySelector('.result');
 
+const button = document.querySelector('a');
+console.log(button);
+
 const select = document.querySelectorAll('.card');
 
 select.forEach(choice =>  {
@@ -93,3 +96,12 @@ function checkGame (userChoice, computerChoice) {
         checkWinner(userTotalScore, computerTotalScore);
     }
 }
+
+button.addEventListener('click', () => {
+    userTotalScore = 0;
+    computerTotalScore = 0;
+    winner.innerHTML = "<p>Result</p>";
+    userChoiceDisplay.innerHTML = "";
+    computerChoiceDisplay.innerHTML = "";
+    updateScore();
+})
